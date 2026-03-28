@@ -4,6 +4,8 @@ import { config } from '../config';
 const { webhookUrl } = config.scorecard;
 const { bookCall, linkedin } = config.urls;
 const { price } = config.founding;
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL ?? '';
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ?? '';
 
 const questions = [
   {
@@ -289,7 +291,7 @@ const questionLabels = [
   .score-charcoal { color: #1C1917; }
 </style>
 
-<script define:vars={{ webhookUrl, bookCall, linkedin, price }}>
+<script define:vars={{ webhookUrl, bookCall, linkedin, price, supabaseUrl, supabaseKey }}>
   // ─── Data ───────────────────────────────────────────────────────────────────
 
   const TIERS = [
@@ -607,8 +609,6 @@ const questionLabels = [
   // ─── API calls ───────────────────────────────────────────────────────────────
 
   async function submitToSupabase(payload) {
-    const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-    const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
     if (!supabaseUrl || !supabaseKey) return;
 
     try {
