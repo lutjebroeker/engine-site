@@ -1,0 +1,12 @@
+---
+interface Props {
+  text: string;
+  light?: boolean;
+}
+
+const { text, light = false } = Astro.props;
+---
+
+<span class={`block text-xs font-semibold font-sans uppercase tracking-widest mb-4 ${light ? 'text-light-gray' : 'text-forest'}`}>
+  {text}
+</span>

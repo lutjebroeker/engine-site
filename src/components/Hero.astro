@@ -1,0 +1,49 @@
+---
+import { config } from '../config';
+import Button from './ui/Button.astro';
+import StatCard from './ui/StatCard.astro';
+import Arrow from './icons/Arrow.astro';
+
+const { spotsRemaining, price } = config.founding;
+const { scorecard } = config.urls;
+---
+
+<section class="bg-cream py-24 md:py-32 animate-on-scroll">
+  <div class="max-w-content mx-auto px-6 text-center">
+
+    <!-- Badge -->
+    <div class="inline-block bg-amber-light text-amber rounded px-3 py-1 text-xs font-semibold font-sans uppercase tracking-wide mb-8">
+      Founding Cohort — {spotsRemaining} Spots
+    </div>
+
+    <!-- H1 -->
+    <h1 class="font-serif text-display-mobile md:text-display text-charcoal mb-6 max-w-narrow mx-auto">
+      Finally follow through on the work that actually matters.
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="font-sans text-lg text-warm-gray mb-10 max-w-narrow mx-auto leading-relaxed">
+      For professionals who know what to do — but end every week wondering why they didn't.
+    </p>
+
+    <!-- CTA -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+      <Button href={scorecard} data-cta="scorecard" variant="primary">
+        Take the Execution Score Assessment
+        <Arrow />
+      </Button>
+    </div>
+
+    <p class="text-sm text-light-gray font-sans mb-16">
+      Free. 2 minutes. No email required to start.
+    </p>
+
+    <!-- Stat cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-content mx-auto">
+      <StatCard number="85%+" description="target execution rate" />
+      <StatCard number="&lt;48h" description="from call to system live" />
+      <StatCard number="5 min/day" description="is all it takes" />
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,34 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'amber';
+  href?: string;
+  'data-cta'?: string;
+  class?: string;
+  size?: 'default' | 'large';
+}
+
+const {
+  variant = 'primary',
+  href = '#',
+  'data-cta': dataCta,
+  class: className = '',
+  size = 'default',
+} = Astro.props;
+
+const base = 'inline-flex items-center gap-2 rounded-md font-sans font-semibold transition-all duration-200 cursor-pointer';
+const sizing = size === 'large' ? 'py-4 px-8 text-lg' : 'py-3.5 px-7 text-base';
+
+const variants = {
+  primary:   'bg-forest text-cream hover:bg-forest-dark hover:-translate-y-px',
+  secondary: 'bg-transparent border border-forest text-forest hover:bg-forest-light hover:-translate-y-px',
+  amber:     'bg-amber-warm text-white hover:bg-amber hover:-translate-y-px',
+};
+---
+
+<a
+  href={href}
+  data-cta={dataCta}
+  class={`${base} ${sizing} ${variants[variant]} ${className}`}
+>
+  <slot />
+</a>

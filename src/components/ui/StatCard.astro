@@ -1,0 +1,16 @@
+---
+interface Props {
+  number: string;
+  description: string;
+  accent?: 'forest' | 'amber';
+}
+
+const { number, description, accent = 'forest' } = Astro.props;
+
+const numberColor = accent === 'amber' ? 'text-amber-warm' : 'text-forest';
+---
+
+<div class="border border-ee-border rounded-lg p-6 bg-cream text-left">
+  <div class={`font-mono text-4xl font-medium mb-2 ${numberColor}`}>{number}</div>
+  <div class="text-sm text-warm-gray font-sans leading-snug">{description}</div>
+</div>

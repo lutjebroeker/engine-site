@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary:       #FDFBF7;
+  --bg-secondary:     #F5F0E8;
+  --bg-dark:          #1C1917;
+  --bg-dark-soft:     #292524;
+  --text-primary:     #1C1917;
+  --text-secondary:   #57534E;
+  --text-tertiary:    #A8A29E;
+  --text-inverse:     #FDFBF7;
+  --accent:           #2D5A3D;
+  --accent-hover:     #1E3F2B;
+  --accent-light:     #E8F0EB;
+  --accent-muted:     #4A7C5C;
+  --amber:            #B45309;
+  --amber-light:      #FEF3C7;
+  --amber-warm:       #D97706;
+  --border:           #E7E5E4;
+  --border-strong:    #D6D3D1;
+}
+
+@layer base {
+  html {
+    font-family: "Inter", system-ui, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

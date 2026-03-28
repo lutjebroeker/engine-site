@@ -1,0 +1,83 @@
+---
+import { config } from '../config';
+import SectionLabel from './ui/SectionLabel.astro';
+import Button from './ui/Button.astro';
+import Arrow from './icons/Arrow.astro';
+
+const { spotsRemaining, price, regularPrice } = config.founding;
+const { scorecard } = config.urls;
+
+const offerItems = [
+  { label: 'Done-for-you setup on your dedicated server', sublabel: 'Configured to your goals, schedule, and patterns', value: '€1,500' },
+  { label: 'Keystone Extraction', sublabel: 'AI analyzes your notes and values to build your personal operating system', value: '€500' },
+  { label: 'Daily AI check-ins via Telegram or Slack', sublabel: 'Morning priorities + evening accountability', value: '€600' },
+  { label: 'Weekly execution reports with AI pattern analysis', sublabel: '', value: '€400' },
+  { label: '1× 60-min goal planning session', sublabel: '', value: '€300' },
+  { label: '2× 30-min training sessions (week 1 + week 4)', sublabel: '', value: '€300' },
+  { label: 'Lifetime system access', sublabel: 'You own the server, the data, everything', value: '—' },
+];
+---
+
+<section class="bg-charcoal py-section animate-on-scroll">
+  <div class="max-w-content mx-auto px-6">
+
+    <SectionLabel text="The Offer" light />
+
+    <h2 class="font-serif text-heading-mobile md:text-heading text-cream mb-12">
+      Everything you need to execute consistently for 12 weeks.
+    </h2>
+
+    <!-- Offer rows -->
+    <div class="border border-charcoal-soft rounded-lg overflow-hidden mb-8">
+      {offerItems.map((item) => (
+        <div class="flex items-start justify-between gap-6 px-6 py-5 border-b border-charcoal-soft last:border-b-0">
+          <div>
+            <div class="font-sans font-medium text-cream text-base">{item.label}</div>
+            {item.sublabel && (
+              <div class="font-sans text-sm text-light-gray mt-0.5">{item.sublabel}</div>
+            )}
+          </div>
+          <div class="font-mono text-light-gray text-sm flex-shrink-0 mt-0.5">{item.value}</div>
+        </div>
+      ))}
+
+      <!-- Totals -->
+      <div class="px-6 py-5 border-b border-charcoal-soft flex justify-between">
+        <span class="font-sans text-light-gray text-sm">Total value</span>
+        <span class="font-mono text-light-gray text-sm">€3,600</span>
+      </div>
+      <div class="px-6 py-5 border-b border-charcoal-soft flex justify-between">
+        <span class="font-sans text-light-gray text-sm">Regular price (Q3 2026)</span>
+        <span class="font-mono text-light-gray text-sm line-through">{regularPrice}</span>
+      </div>
+
+      <!-- Founding price highlight -->
+      <div class="px-6 py-6 bg-charcoal-soft border-t-2 border-amber-warm">
+        <div class="flex items-baseline justify-between mb-2">
+          <span class="font-sans font-semibold text-cream text-lg">Founding Member Price</span>
+          <span class="font-mono text-amber-warm text-3xl font-medium">{price}</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <p class="font-sans text-sm text-light-gray">Locked in permanently.</p>
+          <p class="font-sans text-sm text-light-gray">{spotsRemaining} of 12 spots remaining</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="font-sans text-base text-light-gray mb-8 max-w-narrow">
+      Your founding member rate is locked in forever. When the system launches publicly, the price
+      goes to {regularPrice}. No upsells. No hidden fees.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <Button href={scorecard} data-cta="scorecard" variant="amber" size="large">
+        Apply for a Founding Spot
+        <Arrow />
+      </Button>
+      <p class="font-sans text-sm text-light-gray">
+        {spotsRemaining} of 12 spots remaining.
+      </p>
+    </div>
+
+  </div>
+</section>

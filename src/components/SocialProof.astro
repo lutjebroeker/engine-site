@@ -1,0 +1,78 @@
+---
+import SectionLabel from './ui/SectionLabel.astro';
+---
+
+<section class="bg-sand py-section animate-on-scroll">
+  <div class="max-w-content mx-auto px-6">
+
+    <SectionLabel text="Results" />
+    <h2 class="font-serif text-heading-mobile md:text-heading text-charcoal mb-12">
+      I built this for myself first.
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Card 1: Score trajectory -->
+      <div class="bg-cream border border-ee-border rounded-lg p-8">
+        <div class="mb-6">
+          <div class="font-mono text-light-gray text-sm mb-2 uppercase tracking-wide">Execution Score Trajectory</div>
+          <div class="flex items-baseline gap-3">
+            <span class="font-mono text-3xl text-warm-gray line-through">34%</span>
+            <span class="font-mono text-5xl text-forest font-medium">82%</span>
+          </div>
+        </div>
+        <p class="text-sm text-light-gray font-sans italic">
+          8 weeks. Same person. Different system.
+        </p>
+      </div>
+
+      <!-- Card 2: Telegram mock -->
+      <div class="bg-cream border border-ee-border rounded-lg p-8">
+        <div class="font-mono text-light-gray text-xs mb-3 uppercase tracking-wide">Daily Check-in</div>
+        <div class="bg-sand rounded-lg p-4 text-sm font-sans space-y-3">
+          <div class="text-xs text-light-gray text-center">&#x1F514; 17:00</div>
+
+          <div class="bg-white rounded-lg p-3 text-warm-gray text-xs leading-relaxed">
+            <span class="font-semibold text-forest">Engine</span><br/>
+            You committed to 3 priorities today:<br/>
+            1. Finish partner proposal<br/>
+            2. Review hiring pipeline<br/>
+            3. Block Friday for strategy<br/><br/>
+            What did you actually do?
+          </div>
+
+          <div class="bg-forest-light rounded-lg p-3 text-warm-gray text-xs leading-relaxed ml-4">
+            Did 1 and 3. Pipeline got pushed by an escalation.
+          </div>
+
+          <div class="bg-white rounded-lg p-3 text-warm-gray text-xs leading-relaxed">
+            <span class="font-semibold text-forest">Engine</span><br/>
+            Noted. Pipeline pushed 3 times in 4 weeks. Pattern or priority issue?
+          </div>
+        </div>
+        <p class="mt-4 text-sm text-light-gray font-sans italic">
+          This is what 5pm accountability looks like.
+        </p>
+      </div>
+
+      <!-- Card 3: Weekly report -->
+      <div class="bg-cream border border-ee-border rounded-lg p-8">
+        <div class="font-mono text-light-gray text-xs mb-3 uppercase tracking-wide">Weekly Review Excerpt</div>
+        <blockquote class="border-l-2 border-forest pl-4 text-warm-gray font-sans text-sm leading-relaxed italic">
+          "Week 6 execution score: 78%. Up from 71% last week. Pattern detected: Tuesday and Wednesday
+          consistently low — back-to-back meetings block deep work. Recommendation: protect Tuesday
+          morning as a non-negotiable focus block."
+        </blockquote>
+        <p class="mt-4 text-sm text-light-gray font-sans italic">
+          AI-generated. Based on real check-in data.
+        </p>
+      </div>
+
+    </div>
+
+    <p class="mt-8 text-sm text-light-gray font-sans text-center">
+      Replace these with real client data once pilots complete.
+    </p>
+
+  </div>
+</section>

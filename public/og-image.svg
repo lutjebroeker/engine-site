@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#FDFBF7"/>
+
+  <!-- Forest green accent bar -->
+  <rect x="0" y="0" width="8" height="630" fill="#2D5A3D"/>
+
+  <!-- Decorative rectangle -->
+  <rect x="960" y="80" width="180" height="3" fill="#2D5A3D" opacity="0.3"/>
+  <rect x="960" y="95" width="120" height="3" fill="#2D5A3D" opacity="0.2"/>
+
+  <!-- Brand name -->
+  <text x="80" y="240" font-family="Georgia, serif" font-size="72" font-weight="700" fill="#1C1917" letter-spacing="-1">Execution Engine</text>
+
+  <!-- Tagline -->
+  <text x="80" y="310" font-family="system-ui, sans-serif" font-size="32" fill="#57534E" letter-spacing="0">From knowing to doing.</text>
+
+  <!-- Divider -->
+  <rect x="80" y="360" width="120" height="2" fill="#2D5A3D"/>
+
+  <!-- Stats -->
+  <text x="80" y="430" font-family="monospace" font-size="48" font-weight="500" fill="#2D5A3D">85%+</text>
+  <text x="80" y="460" font-family="system-ui, sans-serif" font-size="18" fill="#A8A29E">execution rate</text>
+
+  <text x="280" y="430" font-family="monospace" font-size="48" font-weight="500" fill="#2D5A3D">12</text>
+  <text x="280" y="460" font-family="system-ui, sans-serif" font-size="18" fill="#A8A29E">founding spots</text>
+
+  <text x="440" y="430" font-family="monospace" font-size="48" font-weight="500" fill="#B45309">€997</text>
+  <text x="440" y="460" font-family="system-ui, sans-serif" font-size="18" fill="#A8A29E">founding price</text>
+
+  <!-- URL -->
+  <text x="80" y="560" font-family="system-ui, sans-serif" font-size="20" fill="#A8A29E">execution-engine.com</text>
+</svg>

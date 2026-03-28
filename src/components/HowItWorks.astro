@@ -1,0 +1,44 @@
+---
+import SectionLabel from './ui/SectionLabel.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'We configure your system',
+    body: 'In a 60-minute onboarding call, we map your goals, schedule, and patterns. Within 48 hours, your personal accountability system is live on a dedicated server — configured for you, owned by you.',
+  },
+  {
+    number: '02',
+    title: 'Your system checks in daily',
+    body: 'Every morning: your top 3 priorities, aligned to your 12-week goals. Every evening: a simple check — did you do what you said? No feelings. Just facts. Via Telegram or Slack.',
+  },
+  {
+    number: '03',
+    title: 'You see the truth, weekly',
+    body: "Every Sunday: an AI-generated execution report. What you executed. What you didn't. Patterns detected. Your execution score. The number doesn't lie.",
+  },
+];
+---
+
+<section class="bg-cream py-section animate-on-scroll">
+  <div class="max-w-content mx-auto px-6">
+
+    <div class="mb-12">
+      <SectionLabel text="How It Works" />
+      <h2 class="font-serif text-heading-mobile md:text-heading text-charcoal">
+        Three steps. We build it. You use it.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {steps.map((step) => (
+        <div class="bg-white border border-ee-border rounded-lg p-8">
+          <div class="font-mono text-4xl text-forest font-medium mb-4">{step.number}</div>
+          <h4 class="font-serif text-xl text-charcoal mb-3">{step.title}</h4>
+          <p class="font-sans text-base text-warm-gray leading-relaxed">{step.body}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

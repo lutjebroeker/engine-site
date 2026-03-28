@@ -1,0 +1,47 @@
+---
+import { config } from '../config';
+import Button from './ui/Button.astro';
+import Arrow from './icons/Arrow.astro';
+
+const { spotsRemaining, price } = config.founding;
+const { scorecard, bookCall } = config.urls;
+---
+
+<section class="bg-charcoal py-section animate-on-scroll">
+  <div class="max-w-content mx-auto px-6 text-center">
+
+    <h2 class="font-serif text-display-mobile md:text-display text-cream mb-4">
+      Stop planning. Start executing.
+    </h2>
+
+    <p class="font-sans text-light-gray text-lg mb-10">
+      {spotsRemaining} founding spots. {price}. 30-day guarantee.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+      <Button href={scorecard} data-cta="scorecard" variant="amber" size="large">
+        Take the Execution Score Assessment
+        <Arrow />
+      </Button>
+    </div>
+
+    <p class="font-sans text-light-gray text-base mb-12">
+      Or{' '}
+      <a
+        href={bookCall}
+        class="underline hover:text-cream transition-colors"
+      >
+        book a 20-minute call
+      </a>
+      {' '}to see if it's the right fit.
+    </p>
+
+    <hr class="border-charcoal-soft mb-10 max-w-narrow mx-auto" />
+
+    <blockquote class="max-w-narrow mx-auto font-sans text-sm text-light-gray italic leading-relaxed">
+      "I built this because I was you. Full calendar, zero strategic output. The system changed that
+      for me. I want to see if it does the same for you. — Jelle"
+    </blockquote>
+
+  </div>
+</section>

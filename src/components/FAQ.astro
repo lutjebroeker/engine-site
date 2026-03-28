@@ -1,0 +1,52 @@
+---
+import SectionLabel from './ui/SectionLabel.astro';
+import FAQItem from './ui/FAQItem.astro';
+
+const faqs = [
+  {
+    question: 'How much of my time does this actually require?',
+    answer: '5 minutes per day. You respond to two messages — your morning priorities and your evening check-in. That\'s it.',
+  },
+  {
+    question: 'Is this just a chatbot?',
+    answer: 'No. It\'s a configured AI accountability system running on your own dedicated server. It knows your goals, tracks your patterns, and generates weekly analysis. It also won\'t let you BS your way through a check-in.',
+  },
+  {
+    question: 'What if I already use Todoist / Notion / a planner?',
+    answer: 'Those are input tools — they capture what you want to do. This is output infrastructure — it measures what you actually did. They work together.',
+  },
+  {
+    question: 'What happens after 12 weeks?',
+    answer: 'The system keeps running. Your server, your data. Start a new 12-week cycle, add modules, or continue with managed hosting (€50/month) for maintenance.',
+  },
+  {
+    question: 'I\'m not technical. Do I need to manage a server?',
+    answer: 'No. You interact with a Telegram or Slack bot. I handle everything technical. You\'ll never see a terminal, a dashboard, or a config file.',
+  },
+  {
+    question: 'What\'s the founding member benefit?',
+    answer: 'You lock in €997 permanently (regular price: €2,497). Direct access to me for feedback. And you help shape the system with your input.',
+  },
+  {
+    question: 'What if it doesn\'t work for me?',
+    answer: '30-day guarantee. Full refund if your execution doesn\'t measurably improve. Only condition: respond to your daily check-ins.',
+  },
+];
+---
+
+<section class="bg-cream py-section animate-on-scroll">
+  <div class="max-w-narrow mx-auto px-6">
+
+    <SectionLabel text="FAQ" />
+    <h2 class="font-serif text-heading-mobile md:text-heading text-charcoal mb-10">
+      Common questions.
+    </h2>
+
+    <div class="border-t border-ee-border">
+      {faqs.map((faq) => (
+        <FAQItem question={faq.question} answer={faq.answer} />
+      ))}
+    </div>
+
+  </div>
+</section>
