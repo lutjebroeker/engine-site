@@ -6,9 +6,12 @@ export const config = {
     regularPrice: '€2,497',
   },
   urls: {
-    scorecard: '#',           // TODO: ScoreApp URL when ready
+    scorecard: '/score',
     bookCall: '#',            // TODO: Calendly/Cal.com URL
     linkedin: 'https://www.linkedin.com/in/jellespek/',
+  },
+  scorecard: {
+    webhookUrl: 'https://n8n.jellespek.nl/webhook/score-submission',
   },
   meta: {
     title: 'Execution Engine — From knowing to doing.',
