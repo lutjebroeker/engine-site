@@ -3,47 +3,65 @@ import { config } from '../config';
 import Button from './ui/Button.astro';
 import StatCard from './ui/StatCard.astro';
 import Arrow from './icons/Arrow.astro';
+import FlipWords from './react/FlipWords';
+import ShinyBadge from './react/ShinyBadge';
 
-const { spotsRemaining, price } = config.founding;
 const { scorecard } = config.urls;
 ---
 
-<section class="bg-cream py-24 md:py-32 animate-on-scroll">
-  <div class="max-w-content mx-auto px-6 text-center">
+<section class="relative min-h-screen flex items-center justify-center aurora-bg pt-16 overflow-hidden">
+  <!-- Grid pattern overlay -->
+  <div class="absolute inset-0 grid-pattern opacity-50"></div>
 
-    <!-- Badge -->
-    <div class="inline-block bg-amber-light text-amber rounded px-3 py-1 text-xs font-semibold font-sans uppercase tracking-wide mb-8">
-      Founding Cohort — {spotsRemaining} Spots
+  <!-- Lamp cone effect -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[conic-gradient(from_90deg_at_50%_0%,transparent_30%,rgba(42,245,152,0.06)_50%,transparent_70%)] blur-[60px] pointer-events-none"></div>
+
+  <div class="relative max-w-content mx-auto px-6 text-center py-24 md:py-32">
+
+    <!-- Status badge -->
+    <div class="mb-8">
+      <ShinyBadge text="AI-Powered Execution System" client:load />
     </div>
 
-    <!-- H1 -->
-    <h1 class="font-serif text-display-mobile md:text-display text-charcoal mb-6 max-w-narrow mx-auto">
-      Finally follow through on the work that actually matters.
+    <!-- Headline -->
+    <h1 class="font-sans font-bold text-display-mobile md:text-display text-off-white mb-2 max-w-[800px] mx-auto">
+      Stop knowing.
+    </h1>
+    <h1 class="font-sans font-bold text-display-mobile md:text-display mb-6 max-w-[800px] mx-auto">
+      Start <FlipWords words={['executing', 'shipping', 'delivering', 'winning']} client:load />
     </h1>
 
     <!-- Subheadline -->
-    <p class="font-sans text-lg text-warm-gray mb-10 max-w-narrow mx-auto leading-relaxed">
-      For professionals who know what to do — but end every week wondering why they didn't.
+    <p class="font-sans text-lg md:text-xl text-text-muted mb-4 max-w-[600px] mx-auto leading-relaxed">
+      AI-powered accountability that turns your best intentions into completed actions — in your first 14 days, spending just 5 minutes a day, or your money back.
+    </p>
+
+    <!-- Avatar qualification -->
+    <p class="font-sans text-sm text-text-dim mb-10 max-w-[500px] mx-auto">
+      For professionals who plan but don't ship, know but don't do, start but never finish.
     </p>
 
     <!-- CTA -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-      <Button href={scorecard} data-cta="scorecard" variant="primary">
+      <Button href={scorecard} data-cta="scorecard" variant="primary" size="large">
         Take the Execution Score Assessment
         <Arrow />
       </Button>
     </div>
 
-    <p class="text-sm text-light-gray font-sans mb-16">
+    <p class="text-sm text-text-dim font-sans mb-16">
       Free. 2 minutes. No email required to start.
     </p>
 
     <!-- Stat cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-content mx-auto">
       <StatCard number="85%+" description="target execution rate" />
-      <StatCard number="&lt;48h" description="from call to system live" />
-      <StatCard number="5 min/day" description="is all it takes" />
+      <StatCard number="<48h" description="from call to system live" />
+      <StatCard number="5 min" description="per day is all it takes" />
     </div>
 
   </div>
+
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void to-transparent"></div>
 </section>

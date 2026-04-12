@@ -2,45 +2,71 @@
 import { config } from '../config';
 import Button from './ui/Button.astro';
 import Arrow from './icons/Arrow.astro';
+import CountdownTimer from './react/CountdownTimer';
 
-const { spotsRemaining, price } = config.founding;
+const { price, cohortCloseDate } = config.founding;
 const { scorecard, bookCall } = config.urls;
 ---
 
-<section class="bg-charcoal py-section animate-on-scroll">
-  <div class="max-w-content mx-auto px-6 text-center">
+<section class="relative bg-void py-section-mobile md:py-section overflow-hidden animate-on-scroll">
+  <!-- Background effects -->
+  <div class="absolute inset-0 aurora-bg opacity-50"></div>
+  <div class="absolute inset-0 grid-pattern opacity-20"></div>
 
-    <h2 class="font-serif text-display-mobile md:text-display text-cream mb-4">
+  <!-- Lamp effect -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[conic-gradient(from_90deg_at_50%_0%,transparent_30%,rgba(42,245,152,0.06)_50%,transparent_70%)] blur-[50px] pointer-events-none"></div>
+
+  <div class="relative max-w-content mx-auto px-6 text-center">
+
+    <!-- Cohort status -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/20 bg-emerald/5 mb-8">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald"></span>
+      </span>
+      <span class="text-emerald text-xs font-medium font-sans uppercase tracking-wide">
+        Founding Cohort — Applications Open
+      </span>
+    </div>
+
+    <h2 class="font-sans font-bold text-display-mobile md:text-display text-off-white mb-4">
       Stop planning. Start executing.
     </h2>
 
-    <p class="font-sans text-light-gray text-lg mb-10">
-      {spotsRemaining} founding spots. {price}. 30-day guarantee.
+    <p class="font-sans text-text-muted text-lg mb-10 max-w-narrow mx-auto">
+      12 founding spots. {price}. Triple guarantee. The cohort closes when it fills.
     </p>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-      <Button href={scorecard} data-cta="scorecard" variant="amber" size="large">
+    <!-- Countdown -->
+    <div class="flex justify-center mb-10">
+      <div>
+        <p class="text-xs font-sans uppercase tracking-widest text-text-dim mb-4">Cohort closes in</p>
+        <CountdownTimer targetDate={cohortCloseDate} client:load />
+      </div>
+    </div>
+
+    <!-- Dual CTA -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+      <Button href={scorecard} data-cta="scorecard" variant="primary" size="large">
         Take the Execution Score Assessment
         <Arrow />
       </Button>
+      <Button href={bookCall} variant="secondary" size="large">
+        Book a 20-min call
+      </Button>
     </div>
 
-    <p class="font-sans text-light-gray text-base mb-12">
-      Or{' '}
-      <a
-        href={bookCall}
-        class="underline hover:text-cream transition-colors"
-      >
-        book a 20-minute call
-      </a>
-      {' '}to see if it's the right fit.
+    <p class="text-sm text-text-dim font-sans mb-16">
+      Not ready to commit? Take the free assessment to see where you stand.
     </p>
 
-    <hr class="border-charcoal-soft mb-10 max-w-narrow mx-auto" />
+    <!-- Founder quote -->
+    <hr class="border-void-border mb-10 max-w-narrow mx-auto" />
 
-    <blockquote class="max-w-narrow mx-auto font-sans text-sm text-light-gray italic leading-relaxed">
+    <blockquote class="max-w-narrow mx-auto font-sans text-sm text-text-muted italic leading-relaxed">
       "I built this because I was you. Full calendar, zero strategic output. The system changed that
-      for me. I want to see if it does the same for you. — Jelle"
+      for me. I want to see if it does the same for you."
+      <span class="block mt-2 text-off-white not-italic font-medium">— Jelle</span>
     </blockquote>
 
   </div>

@@ -1,36 +1,53 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        cream:              '#FDFBF7',
-        sand:               '#F5F0E8',
-        charcoal:           '#1C1917',
-        'charcoal-soft':    '#292524',
-        forest:             '#2D5A3D',
-        'forest-dark':      '#1E3F2B',
-        'forest-light':     '#E8F0EB',
-        sage:               '#4A7C5C',
-        amber:              '#B45309',
-        'amber-light':      '#FEF3C7',
-        'amber-warm':       '#D97706',
-        'warm-gray':        '#57534E',
-        'light-gray':       '#A8A29E',
-        'ee-border':        '#E7E5E4',
-        'ee-border-strong': '#D6D3D1',
+        // Dark mode primary
+        void:               '#0D0F17',
+        'void-light':       '#121620',
+        'void-card':        '#161B2E',
+        'void-border':      '#1E2540',
+        'void-border-light':'#2A3355',
+
+        // Text
+        'off-white':        '#E8E8ED',
+        'text-muted':       '#9CA3AF',
+        'text-dim':         '#6B7280',
+
+        // Accent — electric emerald
+        emerald:            '#2AF598',
+        'emerald-dim':      '#1AD17E',
+        'emerald-glow':     'rgba(42, 245, 152, 0.15)',
+
+        // Warm accent — amber
+        amber:              '#F5A623',
+        'amber-dim':        '#D4901E',
+        'amber-glow':       'rgba(245, 166, 35, 0.15)',
+
+        // Legacy (for offer section compatibility)
+        charcoal:           '#0D0F17',
+        'charcoal-soft':    '#161B2E',
+        cream:              '#E8E8ED',
+        forest:             '#2AF598',
+        'forest-dark':      '#1AD17E',
+        'light-gray':       '#9CA3AF',
+        'warm-gray':        '#9CA3AF',
+        'amber-warm':       '#F5A623',
+        'ee-border':        '#1E2540',
+        'ee-border-strong': '#2A3355',
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
         sans:  ['"Inter"', 'system-ui', 'sans-serif'],
-        mono:  ['"JetBrains Mono"', 'monospace'],
+        mono:  ['"JetBrains Mono Variable"', 'monospace'],
       },
       fontSize: {
-        display:          ['3.5rem',  { lineHeight: '1.15', letterSpacing: '-0.02em' }],
-        'display-mobile': ['2.25rem', { lineHeight: '1.2',  letterSpacing: '-0.02em' }],
-        heading:          ['2.5rem',  { lineHeight: '1.2',  letterSpacing: '-0.01em' }],
-        'heading-mobile': ['1.75rem', { lineHeight: '1.25' }],
-        subheading:       ['1.75rem', { lineHeight: '1.3'  }],
+        display:          ['4.5rem',  { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+        'display-mobile': ['2.5rem',  { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+        heading:          ['3rem',    { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+        'heading-mobile': ['2rem',    { lineHeight: '1.2',  letterSpacing: '-0.01em' }],
+        subheading:       ['1.75rem', { lineHeight: '1.3' }],
       },
       maxWidth: {
         narrow:  '680px',
@@ -38,8 +55,58 @@ export default {
         wide:    '1200px',
       },
       spacing: {
-        section:        '6rem',
-        'section-mobile': '3.5rem',
+        section:          '7rem',
+        'section-mobile': '4rem',
+      },
+      animation: {
+        'gradient':       'gradient 8s ease infinite',
+        'float':          'float 6s ease-in-out infinite',
+        'glow-pulse':     'glow-pulse 2s ease-in-out infinite',
+        'marquee':        'marquee 30s linear infinite',
+        'fade-in':        'fade-in 0.6s ease-out forwards',
+        'slide-up':       'slide-up 0.6s ease-out forwards',
+        'typewriter':     'typewriter 0.05s steps(1) forwards',
+        'border-beam':    'border-beam 4s linear infinite',
+        'flip':           'flip 0.6s ease-in-out',
+        'shimmer':        'shimmer 2s linear infinite',
+      },
+      keyframes: {
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        'glow-pulse': {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '1' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'fade-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        'slide-up': {
+          from: { opacity: '0', transform: 'translateY(1.5rem)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'border-beam': {
+          '0%': { offsetDistance: '0%' },
+          '100%': { offsetDistance: '100%' },
+        },
+        flip: {
+          '0%': { transform: 'rotateX(90deg)', opacity: '0' },
+          '100%': { transform: 'rotateX(0deg)', opacity: '1' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
       },
     },
   },

@@ -1,11 +1,10 @@
 ---
 import { config } from '../config';
 import '../styles/global.css';
-import '@fontsource/playfair-display/700.css';
-import '@fontsource/playfair-display/600.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
 import '@fontsource-variable/jetbrains-mono';
 
 interface Props {
@@ -32,6 +31,7 @@ const canonicalUrl = config.meta.url;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    <meta name="theme-color" content="#0D0F17" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -46,10 +46,11 @@ const canonicalUrl = config.meta.url;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${canonicalUrl}${ogImage}`} />
   </head>
-  <body>
+  <body class="bg-void text-off-white">
     <slot />
 
     <script>
+      // Intersection Observer for scroll animations
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -59,10 +60,15 @@ const canonicalUrl = config.meta.url;
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.08, rootMargin: '0px 0px -50px 0px' }
       );
 
       document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Re-observe for stagger children
+      document.querySelectorAll('.stagger-children').forEach((el) => {
         observer.observe(el);
       });
     </script>

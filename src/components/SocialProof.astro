@@ -1,78 +1,85 @@
 ---
 import SectionLabel from './ui/SectionLabel.astro';
+import CircularProgress from './react/CircularProgress';
+import AnimatedCounter from './react/AnimatedCounter';
 ---
 
-<section class="bg-sand py-section animate-on-scroll">
+<section id="proof" class="bg-void-light py-section-mobile md:py-section animate-on-scroll">
   <div class="max-w-content mx-auto px-6">
 
-    <SectionLabel text="Results" />
-    <h2 class="font-serif text-heading-mobile md:text-heading text-charcoal mb-12">
-      I built this for myself first.
-    </h2>
+    <div class="text-center mb-12">
+      <SectionLabel text="Results" />
+      <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-4">
+        I built this for myself first.
+      </h2>
+      <p class="font-sans text-lg text-text-muted max-w-narrow mx-auto">
+        Before opening to founding members, I ran the system on myself for 8 weeks.
+        Here's what the data shows.
+      </p>
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Score Trajectory -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
-      <!-- Card 1: Score trajectory -->
-      <div class="bg-cream border border-ee-border rounded-lg p-8">
-        <div class="mb-6">
-          <div class="font-mono text-light-gray text-sm mb-2 uppercase tracking-wide">Execution Score Trajectory</div>
-          <div class="flex items-baseline gap-3">
-            <span class="font-mono text-3xl text-warm-gray line-through">34%</span>
-            <span class="font-mono text-5xl text-forest font-medium">82%</span>
+      <!-- Progress circles -->
+      <div class="bg-void-card border border-void-border rounded-xl p-8 flex flex-col items-center justify-center">
+        <p class="text-xs font-sans uppercase tracking-widest text-text-dim mb-6">Before → After</p>
+        <div class="flex items-center gap-8">
+          <CircularProgress value={34} label="Week 1" color="#6B7280" client:visible />
+          <div class="text-text-dim">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </div>
+          <CircularProgress value={82} label="Week 8" client:visible />
         </div>
-        <p class="text-sm text-light-gray font-sans italic">
-          8 weeks. Same person. Different system.
-        </p>
       </div>
 
-      <!-- Card 2: Telegram mock -->
-      <div class="bg-cream border border-ee-border rounded-lg p-8">
-        <div class="font-mono text-light-gray text-xs mb-3 uppercase tracking-wide">Daily Check-in</div>
-        <div class="bg-sand rounded-lg p-4 text-sm font-sans space-y-3">
-          <div class="text-xs text-light-gray text-center">&#x1F514; 17:00</div>
-
-          <div class="bg-white rounded-lg p-3 text-warm-gray text-xs leading-relaxed">
-            <span class="font-semibold text-forest">Engine</span><br/>
-            You committed to 3 priorities today:<br/>
-            1. Finish partner proposal<br/>
-            2. Review hiring pipeline<br/>
-            3. Block Friday for strategy<br/><br/>
-            What did you actually do?
+      <!-- Key stats -->
+      <div class="bg-void-card border border-void-border rounded-xl p-8 space-y-6">
+        <p class="text-xs font-sans uppercase tracking-widest text-text-dim">Key Metrics</p>
+        <div>
+          <div class="flex items-baseline gap-2">
+            <AnimatedCounter target={141} suffix="%" className="text-emerald text-3xl font-bold" client:visible />
           </div>
-
-          <div class="bg-forest-light rounded-lg p-3 text-warm-gray text-xs leading-relaxed ml-4">
-            Did 1 and 3. Pipeline got pushed by an escalation.
-          </div>
-
-          <div class="bg-white rounded-lg p-3 text-warm-gray text-xs leading-relaxed">
-            <span class="font-semibold text-forest">Engine</span><br/>
-            Noted. Pipeline pushed 3 times in 4 weeks. Pattern or priority issue?
-          </div>
+          <p class="text-sm text-text-muted mt-1">improvement in execution score</p>
         </div>
-        <p class="mt-4 text-sm text-light-gray font-sans italic">
-          This is what 5pm accountability looks like.
-        </p>
+        <div>
+          <div class="flex items-baseline gap-2">
+            <AnimatedCounter target={56} className="text-emerald text-3xl font-bold" client:visible />
+            <span class="text-text-muted text-lg">days</span>
+          </div>
+          <p class="text-sm text-text-muted mt-1">consecutive daily check-ins</p>
+        </div>
+        <div>
+          <div class="flex items-baseline gap-2">
+            <AnimatedCounter target={12} className="text-emerald text-3xl font-bold" client:visible />
+          </div>
+          <p class="text-sm text-text-muted mt-1">execution patterns identified by AI</p>
+        </div>
       </div>
 
-      <!-- Card 3: Weekly report -->
-      <div class="bg-cream border border-ee-border rounded-lg p-8">
-        <div class="font-mono text-light-gray text-xs mb-3 uppercase tracking-wide">Weekly Review Excerpt</div>
-        <blockquote class="border-l-2 border-forest pl-4 text-warm-gray font-sans text-sm leading-relaxed italic">
+      <!-- Weekly report excerpt -->
+      <div class="bg-void-card border border-void-border rounded-xl p-8">
+        <p class="text-xs font-sans uppercase tracking-widest text-text-dim mb-4">Weekly Report Excerpt</p>
+        <blockquote class="border-l-2 border-emerald pl-4 text-text-muted font-sans text-sm leading-relaxed italic">
           "Week 6 execution score: 78%. Up from 71% last week. Pattern detected: Tuesday and Wednesday
           consistently low — back-to-back meetings block deep work. Recommendation: protect Tuesday
           morning as a non-negotiable focus block."
         </blockquote>
-        <p class="mt-4 text-sm text-light-gray font-sans italic">
+        <p class="mt-4 text-xs text-text-dim font-sans">
           AI-generated. Based on real check-in data.
         </p>
       </div>
 
     </div>
 
-    <p class="mt-8 text-sm text-light-gray font-sans text-center">
-      Replace these with real client data once pilots complete.
-    </p>
+    <!-- Testimonial placeholder ready for future use -->
+    <div class="text-center p-8 rounded-xl border border-dashed border-void-border">
+      <p class="text-sm text-text-dim font-sans">
+        Founding cohort results will appear here as pilots complete.
+      </p>
+    </div>
 
   </div>
 </section>

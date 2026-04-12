@@ -4,80 +4,105 @@ import SectionLabel from './ui/SectionLabel.astro';
 import Button from './ui/Button.astro';
 import Arrow from './icons/Arrow.astro';
 
-const { spotsRemaining, price, regularPrice } = config.founding;
+const { price, regularPrice } = config.founding;
 const { scorecard } = config.urls;
 
 const offerItems = [
-  { label: 'Done-for-you setup on your dedicated server', sublabel: 'Configured to your goals, schedule, and patterns', value: '€1,500' },
-  { label: 'Keystone Extraction', sublabel: 'AI analyzes your notes and values to build your personal operating system', value: '€500' },
-  { label: 'Daily AI check-ins via Telegram or Slack', sublabel: 'Morning priorities + evening accountability', value: '€600' },
-  { label: 'Weekly execution reports with AI pattern analysis', sublabel: '', value: '€400' },
-  { label: '1× 60-min goal planning session', sublabel: '', value: '€300' },
-  { label: '2× 30-min training sessions (week 1 + week 4)', sublabel: '', value: '€300' },
-  { label: 'Lifetime system access', sublabel: 'You own the server, the data, everything', value: '—' },
+  { name: 'The Execution Autopilot™', label: 'Done-for-you AI setup, configured to your goals', value: '€1,500' },
+  { name: 'The Keystone Extraction™', label: 'AI analyzes your notes and values to build your personal operating system', value: '€500' },
+  { name: 'The Unforgiving Mirror™', label: 'Morning priorities + evening truth, every single day via Telegram or Slack', value: '€600' },
+  { name: 'The Weekly Reckoning™', label: 'AI-generated execution reports with pattern analysis', value: '€400' },
+  { name: 'The Strategy Session', label: '1× 60-min goal planning and system calibration call', value: '€300' },
+  { name: 'The Tune-Up Sessions', label: '2× 30-min training sessions (week 1 + week 4)', value: '€300' },
+  { name: 'Lifetime System Access', label: 'You own the server, the data, everything. Forever.', value: '—' },
+];
+
+const bonuses = [
+  { name: 'The Execution Playbook', label: 'PDF guide: the exact frameworks behind the system', value: '€197' },
+  { name: 'Private Community Channel', label: 'Connect with other founding members in a private Slack channel', value: '€97' },
+  { name: 'Founder Office Hours', label: 'Monthly group call with Jelle for Q&A and strategy', value: '€297' },
 ];
 ---
 
-<section class="bg-charcoal py-section animate-on-scroll">
+<section id="offer" class="bg-void py-section-mobile md:py-section animate-on-scroll">
   <div class="max-w-content mx-auto px-6">
 
-    <SectionLabel text="The Offer" light />
+    <div class="text-center mb-12">
+      <SectionLabel text="The Offer" />
 
-    <h2 class="font-serif text-heading-mobile md:text-heading text-cream mb-12">
-      Everything you need to execute consistently for 12 weeks.
-    </h2>
+      <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-4">
+        Everything you need to execute consistently for 12 weeks.
+      </h2>
+    </div>
 
     <!-- Offer rows -->
-    <div class="border border-charcoal-soft rounded-lg overflow-hidden mb-8">
+    <div class="border border-void-border rounded-xl overflow-hidden mb-4">
       {offerItems.map((item) => (
-        <div class="flex items-start justify-between gap-6 px-6 py-5 border-b border-charcoal-soft last:border-b-0">
+        <div class="flex items-start justify-between gap-6 px-6 py-5 border-b border-void-border last:border-b-0 group hover:bg-void-card/50 transition-colors">
           <div>
-            <div class="font-sans font-medium text-cream text-base">{item.label}</div>
-            {item.sublabel && (
-              <div class="font-sans text-sm text-light-gray mt-0.5">{item.sublabel}</div>
-            )}
+            <div class="font-sans font-semibold text-off-white text-base">{item.name}</div>
+            <div class="font-sans text-sm text-text-muted mt-0.5">{item.label}</div>
           </div>
-          <div class="font-mono text-light-gray text-sm flex-shrink-0 mt-0.5">{item.value}</div>
+          <div class="font-mono text-text-dim text-sm flex-shrink-0 mt-0.5">{item.value}</div>
         </div>
       ))}
+    </div>
 
-      <!-- Totals -->
-      <div class="px-6 py-5 border-b border-charcoal-soft flex justify-between">
-        <span class="font-sans text-light-gray text-sm">Total value</span>
-        <span class="font-mono text-light-gray text-sm">€3,600</span>
+    <!-- Bonuses -->
+    <div class="mb-6">
+      <p class="text-xs font-sans uppercase tracking-widest text-amber mb-3 px-1">Founding Member Bonuses</p>
+      <div class="border border-amber/20 rounded-xl overflow-hidden bg-amber/5">
+        {bonuses.map((bonus) => (
+          <div class="flex items-start justify-between gap-6 px-6 py-4 border-b border-amber/10 last:border-b-0">
+            <div>
+              <div class="font-sans font-medium text-off-white text-sm">{bonus.name}</div>
+              <div class="font-sans text-xs text-text-muted mt-0.5">{bonus.label}</div>
+            </div>
+            <div class="font-mono text-amber text-sm flex-shrink-0">{bonus.value}</div>
+          </div>
+        ))}
       </div>
-      <div class="px-6 py-5 border-b border-charcoal-soft flex justify-between">
-        <span class="font-sans text-light-gray text-sm">Regular price (Q3 2026)</span>
-        <span class="font-mono text-light-gray text-sm line-through">{regularPrice}</span>
-      </div>
+    </div>
 
-      <!-- Founding price highlight -->
-      <div class="px-6 py-6 bg-charcoal-soft border-t-2 border-amber-warm">
-        <div class="flex items-baseline justify-between mb-2">
-          <span class="font-sans font-semibold text-cream text-lg">Founding Member Price</span>
-          <span class="font-mono text-amber-warm text-3xl font-medium">{price}</span>
+    <!-- Totals + Price Card -->
+    <div class="relative rounded-xl overflow-hidden border-2 border-emerald/30 bg-void-card">
+      <!-- Animated border glow -->
+      <div class="absolute inset-0 rounded-xl opacity-30" style="background: conic-gradient(from 0deg, transparent 60%, rgba(42, 245, 152, 0.3) 80%, transparent 100%); filter: blur(20px);"></div>
+
+      <div class="relative">
+        <div class="px-6 py-4 border-b border-void-border flex justify-between text-sm">
+          <span class="font-sans text-text-muted">Total value</span>
+          <span class="font-mono text-text-muted">€4,191</span>
         </div>
-        <div class="flex items-center justify-between">
-          <p class="font-sans text-sm text-light-gray">Locked in permanently.</p>
-          <p class="font-sans text-sm text-light-gray">{spotsRemaining} of 12 spots remaining</p>
+        <div class="px-6 py-4 border-b border-void-border flex justify-between text-sm">
+          <span class="font-sans text-text-muted">Regular price (Q3 2026)</span>
+          <span class="font-mono text-text-muted line-through">{regularPrice}</span>
+        </div>
+
+        <!-- Founding price -->
+        <div class="px-6 py-8 bg-gradient-to-r from-emerald/5 to-transparent">
+          <div class="flex flex-col sm:flex-row items-start sm:items-baseline justify-between gap-4 mb-3">
+            <div>
+              <span class="font-sans font-bold text-off-white text-xl">Founding Member Price</span>
+              <p class="font-sans text-sm text-text-muted mt-1">Locked in permanently. No upsells. No hidden fees.</p>
+            </div>
+            <span class="font-mono text-emerald text-4xl md:text-5xl font-bold glow-text">{price}</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <p class="font-sans text-base text-light-gray mb-8 max-w-narrow">
-      Your founding member rate is locked in forever. When the system launches publicly, the price
-      goes to {regularPrice}. No upsells. No hidden fees.
-    </p>
-
-    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-      <Button href={scorecard} data-cta="scorecard" variant="amber" size="large">
+    <!-- CTA -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+      <Button href={scorecard} data-cta="scorecard" variant="primary" size="large">
         Apply for a Founding Spot
         <Arrow />
       </Button>
-      <p class="font-sans text-sm text-light-gray">
-        {spotsRemaining} of 12 spots remaining.
-      </p>
     </div>
+
+    <p class="text-center text-sm text-text-dim font-sans mt-4">
+      Applications reviewed within 24 hours. Cohort limited to 12 members.
+    </p>
 
   </div>
 </section>

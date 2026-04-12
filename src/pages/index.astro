@@ -1,27 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
+import LogoBar from '../components/LogoBar.astro';
 import Problem from '../components/Problem.astro';
-import DreamState from '../components/DreamState.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import OfferStack from '../components/OfferStack.astro';
-import Guarantee from '../components/Guarantee.astro';
+import Solution from '../components/Solution.astro';
+import ProductDemo from '../components/ProductDemo.astro';
 import SocialProof from '../components/SocialProof.astro';
-import BuildInPublic from '../components/BuildInPublic.astro';
+import OfferStack from '../components/OfferStack.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Guarantee from '../components/Guarantee.astro';
+import Founder from '../components/Founder.astro';
 import FAQ from '../components/FAQ.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout>
+  <Navbar />
   <Hero />
+  <LogoBar />
   <Problem />
-  <DreamState />
-  <HowItWorks />
-  <OfferStack />
-  <Guarantee />
+  <Solution />
+  <ProductDemo />
   <SocialProof />
-  <BuildInPublic />
+  <OfferStack />
+  <HowItWorks />
+  <Guarantee />
+  <Founder />
   <FAQ />
   <FinalCTA />
   <Footer />

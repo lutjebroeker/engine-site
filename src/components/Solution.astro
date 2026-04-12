@@ -1,0 +1,86 @@
+---
+import SectionLabel from './ui/SectionLabel.astro';
+
+const features = [
+  {
+    title: 'AI Accountability Check-ins',
+    description: 'Morning priorities. Evening truth. Every single day, via Telegram or Slack.',
+    icon: '💬',
+    span: 'md:col-span-2',
+  },
+  {
+    title: 'Execution Scoring',
+    description: 'A number that doesn\'t lie. Track what you said vs. what you did.',
+    icon: '📊',
+    span: '',
+  },
+  {
+    title: 'Pattern Detection',
+    description: 'AI identifies your recurring execution blockers before you can.',
+    icon: '🔍',
+    span: '',
+  },
+  {
+    title: 'Weekly Intelligence Reports',
+    description: 'AI-generated analysis of your execution patterns, trends, and recommendations.',
+    icon: '📈',
+    span: 'md:col-span-2',
+  },
+  {
+    title: 'Your Server. Your Data.',
+    description: 'Self-hosted on your own infrastructure. Privacy-first. No SaaS dependency.',
+    icon: '🔒',
+    span: '',
+  },
+  {
+    title: 'Keystone Extraction',
+    description: 'AI analyzes your notes and values to build your personal operating system.',
+    icon: '🧠',
+    span: '',
+  },
+  {
+    title: '12-Week Execution Cycles',
+    description: 'Structured transformation periods with clear milestones and measurable outcomes.',
+    icon: '🎯',
+    span: '',
+  },
+];
+---
+
+<section class="bg-void py-section-mobile md:py-section relative animate-on-scroll">
+  <!-- Grid pattern -->
+  <div class="absolute inset-0 grid-pattern opacity-30"></div>
+
+  <div class="relative max-w-wide mx-auto px-6">
+
+    <div class="max-w-narrow mb-12">
+      <SectionLabel text="The Solution" />
+
+      <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-6">
+        This isn't a productivity app.
+      </h2>
+
+      <p class="font-sans text-lg text-text-muted leading-relaxed">
+        It's not a to-do list. It's not an accountability partner who gives up after two weeks.
+        It's <strong class="text-emerald">execution infrastructure</strong> — an AI system that
+        measures what you did against what you said, every single day.
+      </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {features.map((f) => (
+        <div class={`group p-6 rounded-xl bg-void-card border border-void-border hover:border-emerald/20 transition-all duration-300 ${f.span}`}>
+          <div class="text-2xl mb-4">{f.icon}</div>
+          <h3 class="font-sans font-semibold text-off-white text-lg mb-2 group-hover:text-emerald transition-colors">
+            {f.title}
+          </h3>
+          <p class="font-sans text-sm text-text-muted leading-relaxed">
+            {f.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

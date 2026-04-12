@@ -25,24 +25,55 @@ const faqs = [
   },
   {
     question: 'What\'s the founding member benefit?',
-    answer: 'You lock in €997 permanently (regular price: €2,497). Direct access to me for feedback. And you help shape the system with your input.',
+    answer: 'You lock in €997 permanently (regular price: €2,497). Direct access to me for feedback. Founding member bonuses including the Execution Playbook, private community channel, and monthly office hours. And you help shape the system with your input.',
   },
   {
     question: 'What if it doesn\'t work for me?',
-    answer: '30-day guarantee. Full refund if your execution doesn\'t measurably improve. Only condition: respond to your daily check-ins.',
+    answer: 'Triple guarantee. 14-day quick win guarantee, 30-day execution guarantee, and uptime commitment. If your execution doesn\'t improve, full refund.',
   },
+];
+
+const notForYou = [
+  'You\'re looking for another to-do list or productivity app.',
+  'You won\'t commit 5 minutes a day to the check-in process.',
+  'You prefer comfortable excuses over uncomfortable truth.',
+  'You want someone to do the work for you. The system tracks execution — you still have to execute.',
 ];
 ---
 
-<section class="bg-cream py-section animate-on-scroll">
+<section id="faq" class="bg-void py-section-mobile md:py-section animate-on-scroll">
   <div class="max-w-narrow mx-auto px-6">
 
+    <!-- Who this is NOT for -->
+    <div class="mb-16">
+      <SectionLabel text="Fair Warning" />
+      <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-6">
+        This is not for everyone.
+      </h2>
+      <p class="font-sans text-text-muted mb-6 leading-relaxed">
+        Execution Engine is not for you if:
+      </p>
+      <ul class="space-y-3">
+        {notForYou.map((item) => (
+          <li class="flex items-start gap-3 font-sans text-text-muted">
+            <span class="text-amber mt-0.5 flex-shrink-0">✕</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="font-sans text-text-muted mt-6 leading-relaxed">
+        But if you're a professional who knows what they need to do and just needs a system
+        that makes it <strong class="text-off-white">unavoidable</strong> — keep reading.
+      </p>
+    </div>
+
+    <!-- FAQ -->
     <SectionLabel text="FAQ" />
-    <h2 class="font-serif text-heading-mobile md:text-heading text-charcoal mb-10">
+    <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-10">
       Common questions.
     </h2>
 
-    <div class="border-t border-ee-border">
+    <div class="border-t border-void-border">
       {faqs.map((faq) => (
         <FAQItem question={faq.question} answer={faq.answer} />
       ))}
