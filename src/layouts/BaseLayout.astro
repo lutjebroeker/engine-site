@@ -1,10 +1,7 @@
 ---
 import { config } from '../config';
 import '../styles/global.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
+import '@fontsource-variable/space-grotesk';
 import '@fontsource-variable/jetbrains-mono';
 
 interface Props {
@@ -23,7 +20,7 @@ const canonicalUrl = config.meta.url;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,10 +32,12 @@ const canonicalUrl = config.meta.url;
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nl_NL" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${canonicalUrl}${ogImage}`} />
+    <meta property="og:image:alt" content="Engine Platform — Je persoonlijk geheugen, werkend gemaakt" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />

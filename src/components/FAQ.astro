@@ -4,73 +4,42 @@ import FAQItem from './ui/FAQItem.astro';
 
 const faqs = [
   {
-    question: 'How much of my time does this actually require?',
-    answer: '5 minutes per day. You respond to two messages — your morning priorities and your evening check-in. That\'s it.',
+    question: 'Moet ik van tool wisselen?',
+    answer: 'Nee. Schrijf waar je wilt — Obsidian, Notion, Apple Notes, voice memo, Telegram. Wij pluggen erin. Jij blijft in je eigen workflow.',
   },
   {
-    question: 'Is this just a chatbot?',
-    answer: 'No. It\'s a configured AI accountability system running on your own dedicated server. It knows your goals, tracks your patterns, and generates weekly analysis. It also won\'t let you BS your way through a check-in.',
+    question: 'Is dit weer een second brain app?',
+    answer: 'Nee. We bouwen geen input-tool. We bouwen output: content, kennis, discipline. De waarde zit niet in waar je schrijft, maar in wat er daarna mee gebeurt.',
   },
   {
-    question: 'What if I already use Todoist / Notion / a planner?',
-    answer: 'Those are input tools — they capture what you want to do. This is output infrastructure — it measures what you actually did. They work together.',
+    question: 'Wat als ik alleen execution wil?',
+    answer: 'Prima. Start met één module (Starter, €47/mo). Voeg Create of Learn toe wanneer je klaar bent. Je upgrade met één klik, zonder nieuwe onboarding.',
   },
   {
-    question: 'What happens after 12 weeks?',
-    answer: 'The system keeps running. Your server, your data. Start a new 12-week cycle, add modules, or continue with managed hosting (€50/month) for maintenance.',
+    question: 'Is mijn data veilig?',
+    answer: 'Alles draait op je eigen infrastructuur of onze Europese servers. Geen big tech. Geen training op jouw data. Jij bent de eigenaar.',
   },
   {
-    question: 'I\'m not technical. Do I need to manage a server?',
-    answer: 'No. You interact with a Telegram or Slack bot. I handle everything technical. You\'ll never see a terminal, a dashboard, or a config file.',
+    question: 'Hoe snel merk ik resultaat?',
+    answer: 'Week 1: je eerste execution score. Week 2: eerste content vanuit je eigen geheugen. Maand 3: het systeem kent je patronen en confronteert je ermee.',
   },
   {
-    question: 'What\'s the founding member benefit?',
-    answer: 'You lock in €997 permanently (regular price: €2,497). Direct access to me for feedback. Founding member bonuses including the Execution Playbook, private community channel, and monthly office hours. And you help shape the system with your input.',
+    question: 'Hoeveel tijd kost het?',
+    answer: '5 minuten per dag. Twee berichten beantwoorden — ochtendprioritieten en avondcheck-in. Verder doet het systeem het werk.',
   },
   {
-    question: 'What if it doesn\'t work for me?',
-    answer: 'Triple guarantee. 14-day quick win guarantee, 30-day execution guarantee, and uptime commitment. If your execution doesn\'t improve, full refund.',
+    question: 'Wat na de 14 dagen trial?',
+    answer: 'Automatisch betaald abonnement vanaf dag 15. Opzeggen met één klik, in één menu. Geen trucs, geen cancellation calls.',
   },
-];
-
-const notForYou = [
-  'You\'re looking for another to-do list or productivity app.',
-  'You won\'t commit 5 minutes a day to the check-in process.',
-  'You prefer comfortable excuses over uncomfortable truth.',
-  'You want someone to do the work for you. The system tracks execution — you still have to execute.',
 ];
 ---
 
 <section id="faq" class="bg-void py-section-mobile md:py-section animate-on-scroll">
   <div class="max-w-narrow mx-auto px-6">
 
-    <!-- Who this is NOT for -->
-    <div class="mb-16">
-      <SectionLabel text="Fair Warning" />
-      <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-6">
-        This is not for everyone.
-      </h2>
-      <p class="font-sans text-text-muted mb-6 leading-relaxed">
-        Execution Engine is not for you if:
-      </p>
-      <ul class="space-y-3">
-        {notForYou.map((item) => (
-          <li class="flex items-start gap-3 font-sans text-text-muted">
-            <span class="text-amber mt-0.5 flex-shrink-0">✕</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-      <p class="font-sans text-text-muted mt-6 leading-relaxed">
-        But if you're a professional who knows what they need to do and just needs a system
-        that makes it <strong class="text-off-white">unavoidable</strong> — keep reading.
-      </p>
-    </div>
-
-    <!-- FAQ -->
     <SectionLabel text="FAQ" />
     <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-10">
-      Common questions.
+      Vragen die mensen vaak stellen.
     </h2>
 
     <div class="border-t border-void-border">

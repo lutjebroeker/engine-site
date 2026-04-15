@@ -2,12 +2,12 @@
 interface Props {
   number: string;
   description: string;
-  accent?: 'emerald' | 'amber';
+  accent?: 'amber' | 'off-white';
 }
 
-const { number, description, accent = 'emerald' } = Astro.props;
+const { number, description, accent = 'amber' } = Astro.props;
 
-const numberColor = accent === 'amber' ? 'text-amber' : 'text-emerald';
+const numberColor = accent === 'amber' ? 'text-amber' : 'text-off-white';
 ---
 
 <div class="glass-card rounded-xl p-6 text-left">

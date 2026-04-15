@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'primary' | 'secondary' | 'amber';
+  variant?: 'primary' | 'secondary' | 'ghost';
   href?: string;
   'data-cta'?: string;
   class?: string;
@@ -19,9 +19,9 @@ const base = 'inline-flex items-center gap-2 rounded-lg font-sans font-semibold 
 const sizing = size === 'large' ? 'py-4 px-8 text-lg' : 'py-3.5 px-7 text-base';
 
 const variants = {
-  primary:   'bg-emerald text-void hover:brightness-110 hover:-translate-y-px shadow-lg shadow-emerald/20',
-  secondary: 'bg-transparent border border-void-border-light text-off-white hover:bg-void-card hover:border-emerald/30 hover:-translate-y-px',
-  amber:     'bg-amber text-void hover:brightness-110 hover:-translate-y-px shadow-lg shadow-amber/20',
+  primary:   'bg-amber text-void hover:brightness-110 hover:-translate-y-px shadow-lg shadow-amber/25',
+  secondary: 'bg-transparent border border-void-border-light text-off-white hover:bg-void-card hover:border-amber/40 hover:text-amber hover:-translate-y-px',
+  ghost:     'text-amber hover:brightness-110',
 };
 ---
 

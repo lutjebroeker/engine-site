@@ -1,31 +1,37 @@
 ---
 import { config } from '../config';
 
-const { linkedin } = config.urls;
+const { linkedin, scorecard } = config.urls;
 ---
 
-<footer class="bg-void py-8 border-t border-void-border">
+<footer class="bg-void py-10 border-t border-void-border">
   <div class="max-w-content mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
 
     <!-- Logo -->
     <div class="flex items-center gap-2.5">
-      <div class="w-6 h-6 rounded-md bg-emerald/10 border border-emerald/20 flex items-center justify-center">
+      <div class="w-6 h-6 rounded-md bg-amber/10 border border-amber/25 flex items-center justify-center">
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8l4 4 6-7" stroke="#2AF598" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 2v12M2 8h12M4.5 4.5l7 7M11.5 4.5l-7 7" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
       <span class="font-sans text-sm text-text-muted">
-        &copy; 2026 Execution Engine
+        &copy; 2026 Engine Platform
       </span>
     </div>
 
     <!-- Links -->
     <div class="flex items-center gap-6">
-      <a href="/score" class="text-sm text-text-dim hover:text-off-white transition-colors font-sans">
-        Free Assessment
+      <a href={scorecard} class="text-sm text-text-dim hover:text-off-white transition-colors font-sans">
+        Gratis score
+      </a>
+      <a href="#pricing" class="text-sm text-text-dim hover:text-off-white transition-colors font-sans">
+        Pricing
       </a>
       <a href="#faq" class="text-sm text-text-dim hover:text-off-white transition-colors font-sans">
         FAQ
+      </a>
+      <a href="#" class="text-sm text-text-dim hover:text-off-white transition-colors font-sans">
+        Privacy
       </a>
       <a
         href={linkedin}

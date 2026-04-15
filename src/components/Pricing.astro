@@ -1,0 +1,89 @@
+---
+import { config } from '../config';
+import SectionLabel from './ui/SectionLabel.astro';
+import Arrow from './icons/Arrow.astro';
+
+const { tiers, trialDays } = config.pricing;
+const { trial } = config.urls;
+---
+
+<section id="pricing" class="relative bg-void py-section-mobile md:py-section overflow-hidden animate-on-scroll">
+  <div class="absolute inset-0 grid-pattern opacity-25"></div>
+
+  <div class="relative max-w-content mx-auto px-6">
+
+    <div class="text-center max-w-narrow mx-auto mb-14">
+      <SectionLabel text="Pricing" />
+      <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-4">
+        Kies je module. Start je trial.
+      </h2>
+      <p class="font-sans text-lg text-text-muted leading-relaxed">
+        Eén module of alle drie. Schaal op wanneer je klaar bent. Geen gratis tier die je tijd kost.
+      </p>
+    </div>
+
+    <!-- Tier cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10 items-stretch">
+      {tiers.map((tier) => {
+        const highlight = tier.highlighted;
+        return (
+          <div class={`relative flex flex-col rounded-xl p-7 transition-all duration-300 ${
+            highlight
+              ? 'bg-void-card border-2 border-amber shadow-lg shadow-amber/10 md:-translate-y-2'
+              : 'bg-void-card border border-void-border hover:border-amber/25'
+          }`}>
+            {highlight && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-amber text-void text-xs font-sans font-bold uppercase tracking-widest">
+                {tier.badge}
+              </div>
+            )}
+
+            <div class="mb-5">
+              <h3 class="font-sans font-bold text-xl text-off-white mb-2">{tier.name}</h3>
+              <p class="font-sans text-sm text-text-muted">{tier.tagline}</p>
+            </div>
+
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class={`font-mono font-bold text-5xl ${highlight ? 'text-amber' : 'text-off-white'}`}>{tier.price}</span>
+              <span class="font-sans text-sm text-text-dim">{tier.priceSuffix}</span>
+            </div>
+
+            <ul class="space-y-3 font-sans text-sm text-text-muted leading-relaxed mb-8 flex-1">
+              {tier.features.map((f) => (
+                <li class="flex items-start gap-2.5">
+                  <svg class="flex-shrink-0 mt-0.5 text-amber" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7.5L5.5 10l5.5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={`${trial}?tier=${tier.id}`}
+              data-cta={`trial-${tier.id}`}
+              class={`w-full inline-flex items-center justify-center gap-2 rounded-lg py-3.5 px-6 font-sans font-semibold text-base transition-all duration-200 hover:-translate-y-px ${
+                highlight
+                  ? 'bg-amber text-void hover:brightness-110 shadow-lg shadow-amber/20'
+                  : 'bg-transparent border border-void-border-light text-off-white hover:border-amber/40 hover:text-amber'
+              }`}
+            >
+              Start {trialDays}-dagen trial
+              <Arrow />
+            </a>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Trial reassurance -->
+    <div class="max-w-[560px] mx-auto text-center">
+      <p class="font-sans text-sm text-text-muted leading-relaxed">
+        <span class="text-off-white font-medium">{trialDays} dagen proberen.</span>
+        Creditcard vooraf, pas betalen op dag {trialDays + 1}.
+        Als je systeem na {trialDays} dagen niet slimmer is dan op dag 1, annuleer je met één klik.
+      </p>
+    </div>
+
+  </div>
+</section>

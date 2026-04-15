@@ -2,72 +2,43 @@
 import { config } from '../config';
 import Button from './ui/Button.astro';
 import Arrow from './icons/Arrow.astro';
-import CountdownTimer from './react/CountdownTimer';
 
-const { price, cohortCloseDate } = config.founding;
-const { scorecard, bookCall } = config.urls;
+const { scorecard } = config.urls;
 ---
 
 <section class="relative bg-void py-section-mobile md:py-section overflow-hidden animate-on-scroll">
   <!-- Background effects -->
-  <div class="absolute inset-0 aurora-bg opacity-50"></div>
-  <div class="absolute inset-0 grid-pattern opacity-20"></div>
+  <div class="absolute inset-0 aurora-bg opacity-60"></div>
+  <div class="absolute inset-0 grid-pattern opacity-25"></div>
 
   <!-- Lamp effect -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[conic-gradient(from_90deg_at_50%_0%,transparent_30%,rgba(42,245,152,0.06)_50%,transparent_70%)] blur-[50px] pointer-events-none"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[conic-gradient(from_90deg_at_50%_0%,transparent_30%,rgba(245,166,35,0.10)_50%,transparent_70%)] blur-[50px] pointer-events-none"></div>
 
   <div class="relative max-w-content mx-auto px-6 text-center">
 
-    <!-- Cohort status -->
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/20 bg-emerald/5 mb-8">
-      <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald"></span>
-      </span>
-      <span class="text-emerald text-xs font-medium font-sans uppercase tracking-wide">
-        Founding Cohort — Applications Open
-      </span>
-    </div>
-
-    <h2 class="font-sans font-bold text-display-mobile md:text-display text-off-white mb-4">
-      Stop planning. Start executing.
+    <h2 class="font-sans font-bold text-display-mobile md:text-display text-off-white mb-5">
+      Stop met plannen.<br />
+      <span class="text-amber">Begin met doen.</span>
     </h2>
 
-    <p class="font-sans text-text-muted text-lg mb-10 max-w-narrow mx-auto">
-      12 founding spots. {price}. Triple guarantee. The cohort closes when it fills.
+    <p class="font-sans text-text-muted text-lg mb-10 max-w-narrow mx-auto leading-relaxed">
+      Je weet al wat je moet doen. Wat je mist is een systeem dat het onvermijdelijk maakt.
     </p>
-
-    <!-- Countdown -->
-    <div class="flex justify-center mb-10">
-      <div>
-        <p class="text-xs font-sans uppercase tracking-widest text-text-dim mb-4">Cohort closes in</p>
-        <CountdownTimer targetDate={cohortCloseDate} client:load />
-      </div>
-    </div>
 
     <!-- Dual CTA -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-      <Button href={scorecard} data-cta="scorecard" variant="primary" size="large">
-        Take the Execution Score Assessment
+      <Button href={scorecard} data-cta="scorecard-final" variant="primary" size="large">
+        Doe de Executie-Kloof Score
         <Arrow />
       </Button>
-      <Button href={bookCall} variant="secondary" size="large">
-        Book a 20-min call
+      <Button href="#pricing" variant="secondary" size="large">
+        Bekijk de pricing
       </Button>
     </div>
 
-    <p class="text-sm text-text-dim font-sans mb-16">
-      Not ready to commit? Take the free assessment to see where you stand.
+    <p class="text-sm text-text-dim font-sans">
+      Niet klaar om te beslissen? Doe de gratis score — die vertelt je wat je nodig hebt.
     </p>
-
-    <!-- Founder quote -->
-    <hr class="border-void-border mb-10 max-w-narrow mx-auto" />
-
-    <blockquote class="max-w-narrow mx-auto font-sans text-sm text-text-muted italic leading-relaxed">
-      "I built this because I was you. Full calendar, zero strategic output. The system changed that
-      for me. I want to see if it does the same for you."
-      <span class="block mt-2 text-off-white not-italic font-medium">— Jelle</span>
-    </blockquote>
 
   </div>
 </section>

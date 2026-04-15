@@ -16,22 +16,26 @@ export default {
         'text-muted':       '#9CA3AF',
         'text-dim':         '#6B7280',
 
-        // Accent — electric emerald
-        emerald:            '#2AF598',
-        'emerald-dim':      '#1AD17E',
-        'emerald-glow':     'rgba(42, 245, 152, 0.15)',
-
-        // Warm accent — amber
+        // Primary accent — warm amber
         amber:              '#F5A623',
+        'amber-hover':      '#FBBF24',
         'amber-dim':        '#D4901E',
+        'amber-soft':       '#FCD34D',
         'amber-glow':       'rgba(245, 166, 35, 0.15)',
 
-        // Legacy (for offer section compatibility)
+        // Semantic
+        success:            '#2AF598', // only for scorecard positive bars / score indicators
+        danger:             '#EF4444', // problem-section accents
+
+        // Legacy aliases (kept to avoid breakage in this pass; all migrated to amber)
         charcoal:           '#0D0F17',
         'charcoal-soft':    '#161B2E',
         cream:              '#E8E8ED',
-        forest:             '#2AF598',
-        'forest-dark':      '#1AD17E',
+        forest:             '#F5A623',
+        'forest-dark':      '#D4901E',
+        emerald:            '#F5A623',
+        'emerald-dim':      '#D4901E',
+        'emerald-glow':     'rgba(245, 166, 35, 0.15)',
         'light-gray':       '#9CA3AF',
         'warm-gray':        '#9CA3AF',
         'amber-warm':       '#F5A623',
@@ -39,14 +43,14 @@ export default {
         'ee-border-strong': '#2A3355',
       },
       fontFamily: {
-        sans:  ['"Inter"', 'system-ui', 'sans-serif'],
+        sans:  ['"Space Grotesk Variable"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
         mono:  ['"JetBrains Mono Variable"', 'monospace'],
       },
       fontSize: {
-        display:          ['4.5rem',  { lineHeight: '1.1', letterSpacing: '-0.03em' }],
-        'display-mobile': ['2.5rem',  { lineHeight: '1.15', letterSpacing: '-0.02em' }],
-        heading:          ['3rem',    { lineHeight: '1.15', letterSpacing: '-0.02em' }],
-        'heading-mobile': ['2rem',    { lineHeight: '1.2',  letterSpacing: '-0.01em' }],
+        display:          ['4.5rem',  { lineHeight: '1.05', letterSpacing: '-0.035em' }],
+        'display-mobile': ['2.5rem',  { lineHeight: '1.1',  letterSpacing: '-0.025em' }],
+        heading:          ['3rem',    { lineHeight: '1.1',  letterSpacing: '-0.025em' }],
+        'heading-mobile': ['2rem',    { lineHeight: '1.2',  letterSpacing: '-0.015em' }],
         subheading:       ['1.75rem', { lineHeight: '1.3' }],
       },
       maxWidth: {

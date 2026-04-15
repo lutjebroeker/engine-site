@@ -1,0 +1,41 @@
+---
+import { config } from '../config';
+import Button from './ui/Button.astro';
+import Arrow from './icons/Arrow.astro';
+
+const { scorecard } = config.urls;
+---
+
+<section class="relative py-section-mobile md:py-section overflow-hidden animate-on-scroll">
+  <!-- Amber-tinted gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-void via-void-light to-void"></div>
+  <div class="absolute inset-0 opacity-70" style="background: radial-gradient(ellipse at center, rgba(245, 166, 35, 0.14) 0%, transparent 60%);"></div>
+  <div class="absolute inset-0 grid-pattern opacity-30"></div>
+
+  <div class="relative max-w-content mx-auto px-6 text-center">
+
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber/30 bg-amber/10 mb-6">
+      <span class="font-sans text-xs font-semibold text-amber uppercase tracking-widest">
+        Gratis · 2 minuten
+      </span>
+    </div>
+
+    <h2 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-4 max-w-[720px] mx-auto">
+      Hoe groot is <span class="text-amber">jouw executie-kloof?</span>
+    </h2>
+
+    <p class="font-sans text-lg text-text-muted mb-10 max-w-narrow mx-auto leading-relaxed">
+      10 vragen. 2 minuten. Direct je score, tier-analyse en een concreet volgende stap.
+    </p>
+
+    <Button href={scorecard} data-cta="scorecard-mid" variant="primary" size="large">
+      Start de test
+      <Arrow />
+    </Button>
+
+    <p class="mt-5 text-sm text-text-dim font-sans">
+      Geen e-mail nodig om te beginnen.
+    </p>
+
+  </div>
+</section>

@@ -4,9 +4,9 @@ import { config } from '../config';
 const { scorecard } = config.urls;
 
 const navLinks = [
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Results', href: '#proof' },
-  { label: 'Pricing', href: '#offer' },
+  { label: 'Hoe het werkt', href: '#how-it-works' },
+  { label: 'Modules', href: '#modules' },
+  { label: 'Pricing', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
 ];
 ---
@@ -16,13 +16,13 @@ const navLinks = [
 
     <!-- Logo -->
     <a href="/" class="flex items-center gap-2.5 group">
-      <div class="w-8 h-8 rounded-lg bg-emerald/10 border border-emerald/20 flex items-center justify-center group-hover:bg-emerald/20 transition-colors">
+      <div class="w-8 h-8 rounded-lg bg-amber/10 border border-amber/25 flex items-center justify-center group-hover:bg-amber/20 transition-colors">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8l4 4 6-7" stroke="#2AF598" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 2v12M2 8h12M4.5 4.5l7 7M11.5 4.5l-7 7" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
       <span class="font-sans font-semibold text-off-white text-sm tracking-tight">
-        Execution Engine
+        Engine Platform
       </span>
     </a>
 
@@ -38,9 +38,9 @@ const navLinks = [
     <!-- CTA -->
     <a
       href={scorecard}
-      class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald/10 border border-emerald/20 text-emerald text-sm font-medium hover:bg-emerald/20 transition-all"
+      class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber/10 border border-amber/25 text-amber text-sm font-medium hover:bg-amber/20 transition-all"
     >
-      Take the Assessment
+      Doe de score
     </a>
 
     <!-- Mobile menu button -->
@@ -61,18 +61,16 @@ const navLinks = [
       ))}
       <a
         href={scorecard}
-        class="block text-center px-4 py-2.5 rounded-lg bg-emerald/10 border border-emerald/20 text-emerald text-sm font-medium mt-4"
+        class="block text-center px-4 py-2.5 rounded-lg bg-amber/10 border border-amber/25 text-amber text-sm font-medium mt-4"
       >
-        Take the Assessment
+        Doe de score
       </a>
     </div>
   </div>
 </nav>
 
 <script>
-  // Scroll behavior: add backdrop + border on scroll
   const navbar = document.getElementById('navbar');
-  let lastScroll = 0;
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
@@ -81,17 +79,14 @@ const navLinks = [
     } else {
       navbar?.classList.remove('bg-void/80', 'backdrop-blur-xl', 'border-b', 'border-void-border');
     }
-    lastScroll = scrollY;
   });
 
-  // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
   });
 
-  // Close mobile menu on link click
   menu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => menu?.classList.add('hidden'));
   });

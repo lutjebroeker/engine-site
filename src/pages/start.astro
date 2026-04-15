@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { config } from '../config';
+
+const { tiers, trialDays } = config.pricing;
+const { webhookUrl } = config.trial;
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL ?? '';
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ?? '';
+---
+
+<BaseLayout
+  title="Start je trial — Engine Platform"
+  description="Start je 14-dagen Engine Platform trial. Creditcard vooraf, pas betalen op dag 15."
+>
+  <main class="min-h-screen bg-void">
+
+    <!-- Nav -->
+    <nav class="border-b border-void-border bg-void/80 backdrop-blur-xl sticky top-0 z-10">
+      <div class="max-w-content mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 font-sans font-semibold text-sm text-off-white hover:text-amber transition-colors">
+          <div class="w-6 h-6 rounded-md bg-amber/10 border border-amber/25 flex items-center justify-center">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12M4.5 4.5l7 7M11.5 4.5l-7 7" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          Engine Platform
+        </a>
+        <span class="font-sans text-sm text-text-muted">14-dagen trial</span>
+      </div>
+    </nav>
+
+    <div class="max-w-narrow mx-auto px-6 py-16">
+
+      <!-- Form view -->
+      <div id="trial-form-view">
+        <p class="font-sans text-sm font-semibold text-amber uppercase tracking-widest mb-3">
+          Start je trial
+        </p>
+        <h1 class="font-sans font-bold text-heading-mobile md:text-heading text-off-white mb-3" id="trial-heading">
+          Start je {trialDays}-dagen trial
+        </h1>
+        <p class="font-sans text-base text-text-muted mb-8 leading-relaxed">
+          Creditcard vooraf, pas betalen op dag {trialDays + 1}. Opzeggen met één klik. We nemen binnen 24 uur contact op om je toegang te activeren.
+        </p>
+
+        <!-- Tier selector -->
+        <div class="mb-6">
+          <label class="block font-sans text-sm font-medium text-off-white mb-2">Kies je tier</label>
+          <div class="grid grid-cols-3 gap-2" id="tier-selector">
+            {tiers.map((tier) => (
+              <button
+                type="button"
+                data-tier={tier.id}
+                class="tier-option text-left px-3 py-3 rounded-lg border border-void-border bg-void-card font-sans hover:border-amber/30 transition-all"
+              >
+                <div class="font-sans text-sm font-semibold text-off-white">{tier.name}</div>
+                <div class="font-mono text-xs text-amber mt-0.5">{tier.price}{tier.priceSuffix}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <form id="trial-form" class="space-y-4" novalidate>
+          <div>
+            <label for="trial-name" class="block font-sans text-sm font-medium text-off-white mb-1.5">
+              Naam <span class="text-text-dim font-normal">(optioneel)</span>
+            </label>
+            <input
+              type="text"
+              id="trial-name"
+              placeholder="Je naam"
+              class="w-full border border-void-border rounded-lg px-4 py-3 font-sans text-base text-off-white bg-void-card placeholder:text-text-dim focus:outline-none focus:border-amber/60 focus:ring-1 focus:ring-amber/60 transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="trial-email" class="block font-sans text-sm font-medium text-off-white mb-1.5">
+              E-mail <span class="text-amber font-medium">*</span>
+            </label>
+            <input
+              type="email"
+              id="trial-email"
+              required
+              placeholder="jij@bedrijf.nl"
+              class="w-full border border-void-border rounded-lg px-4 py-3 font-sans text-base text-off-white bg-void-card placeholder:text-text-dim focus:outline-none focus:border-amber/60 focus:ring-1 focus:ring-amber/60 transition-colors"
+            />
+            <p id="trial-email-error" class="hidden mt-1.5 text-sm text-danger font-sans">Vul een geldig e-mailadres in.</p>
+          </div>
+
+          <input type="hidden" id="trial-tier" value="growth" />
+
+          <button
+            type="submit"
+            id="trial-submit"
+            class="w-full bg-amber text-void rounded-lg py-3.5 px-6 font-sans font-semibold text-base hover:brightness-110 transition-all duration-200 hover:-translate-y-px flex items-center justify-center gap-2"
+          >
+            <span id="trial-btn-text">Activeer mijn trial</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <p class="text-center font-sans text-xs text-text-dim leading-relaxed">
+            Door te starten ga je akkoord met de {trialDays}-dagen trial. Geen verborgen kosten. Opzeggen kan altijd.
+          </p>
+        </form>
+      </div>
+
+      <!-- Success view -->
+      <div id="trial-success-view" class="hidden text-center py-8">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber/10 border border-amber/25 mb-6">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h2 class="font-sans font-bold text-heading-mobile text-off-white mb-3">Gelukt — we zien je snel.</h2>
+        <p class="font-sans text-base text-text-muted mb-8 max-w-sm mx-auto leading-relaxed">
+          We nemen binnen 24 uur contact op met je toegang en de connector-instructies voor je tool.
+        </p>
+        <a href="/" class="font-sans text-sm font-semibold text-amber hover:brightness-110 transition-colors">
+          ← Terug naar de homepage
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script define:vars={{ webhookUrl, supabaseUrl, supabaseKey, tiers }}>
+    // Read tier from query string and select it
+    const params = new URLSearchParams(window.location.search);
+    const requestedTier = params.get('tier');
+    const validIds = tiers.map(t => t.id);
+    const initialTier = validIds.includes(requestedTier) ? requestedTier : 'growth';
+
+    const tierInput = document.getElementById('trial-tier');
+    const headingEl = document.getElementById('trial-heading');
+    tierInput.value = initialTier;
+
+    function selectTier(id) {
+      tierInput.value = id;
+      const tier = tiers.find(t => t.id === id);
+      headingEl.textContent = `Start je 14-dagen trial — ${tier.name}`;
+      document.querySelectorAll('.tier-option').forEach(btn => {
+        const isActive = btn.dataset.tier === id;
+        btn.classList.toggle('border-amber', isActive);
+        btn.classList.toggle('bg-amber/5', isActive);
+        btn.classList.toggle('border-void-border', !isActive);
+      });
+    }
+
+    document.querySelectorAll('.tier-option').forEach(btn => {
+      btn.addEventListener('click', () => selectTier(btn.dataset.tier));
+    });
+
+    selectTier(initialTier);
+
+    // Submit handler
+    const form = document.getElementById('trial-form');
+    const emailInput = document.getElementById('trial-email');
+    const emailError = document.getElementById('trial-email-error');
+    const submitBtn = document.getElementById('trial-submit');
+    const btnText = document.getElementById('trial-btn-text');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('trial-name').value.trim();
+      const email = emailInput.value.trim();
+      const tier = tierInput.value;
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailError.classList.remove('hidden');
+        emailInput.focus();
+        return;
+      }
+      emailError.classList.add('hidden');
+
+      submitBtn.disabled = true;
+      btnText.textContent = 'Bezig…';
+
+      const payload = {
+        name: name || null,
+        email,
+        tier,
+        source: document.referrer ? 'referral' : 'direct',
+      };
+
+      // Fire and forget — don't block the user
+      Promise.allSettled([
+        submitToSupabase(payload),
+        submitToWebhook(payload),
+      ]).then(() => {});
+
+      // Show success immediately
+      document.getElementById('trial-form-view').classList.add('hidden');
+      document.getElementById('trial-success-view').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    async function submitToSupabase(payload) {
+      if (!supabaseUrl || !supabaseKey) return;
+      try {
+        const res = await fetch(`${supabaseUrl}/rest/v1/trial_signups`, {
+          method: 'POST',
+          headers: {
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal',
+          },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) console.warn('Supabase trial insert failed:', res.status);
+      } catch (err) {
+        console.warn('Supabase trial error:', err);
+      }
+    }
+
+    async function submitToWebhook(payload) {
+      if (!webhookUrl) return;
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      } catch (err) {
+        console.warn('Trial webhook error:', err);
+      }
+    }
+  </script>
+</BaseLayout>

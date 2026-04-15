@@ -3,61 +3,61 @@ import { config } from '../config';
 import Button from './ui/Button.astro';
 import StatCard from './ui/StatCard.astro';
 import Arrow from './icons/Arrow.astro';
-import FlipWords from './react/FlipWords';
-import ShinyBadge from './react/ShinyBadge';
 
 const { scorecard } = config.urls;
 ---
 
 <section class="relative min-h-screen flex items-center justify-center aurora-bg pt-16 overflow-hidden">
   <!-- Grid pattern overlay -->
-  <div class="absolute inset-0 grid-pattern opacity-50"></div>
+  <div class="absolute inset-0 grid-pattern opacity-60"></div>
 
   <!-- Lamp cone effect -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[conic-gradient(from_90deg_at_50%_0%,transparent_30%,rgba(42,245,152,0.06)_50%,transparent_70%)] blur-[60px] pointer-events-none"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[conic-gradient(from_90deg_at_50%_0%,transparent_30%,rgba(245,166,35,0.10)_50%,transparent_70%)] blur-[60px] pointer-events-none"></div>
 
-  <div class="relative max-w-content mx-auto px-6 text-center py-24 md:py-32">
+  <div class="relative max-w-content mx-auto px-6 text-center py-24 md:py-28">
 
     <!-- Status badge -->
-    <div class="mb-8">
-      <ShinyBadge text="AI-Powered Execution System" client:load />
+    <div class="mb-8 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber/25 bg-amber/5">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber opacity-60"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-amber"></span>
+      </span>
+      <span class="font-sans text-xs font-medium text-amber uppercase tracking-widest">
+        Execute · Create · Learn
+      </span>
     </div>
 
     <!-- Headline -->
-    <h1 class="font-sans font-bold text-display-mobile md:text-display text-off-white mb-2 max-w-[800px] mx-auto">
-      Stop knowing.
-    </h1>
-    <h1 class="font-sans font-bold text-display-mobile md:text-display mb-6 max-w-[800px] mx-auto">
-      Start <FlipWords words={['executing', 'shipping', 'delivering', 'winning']} client:load />
+    <h1 class="font-sans font-bold text-display-mobile md:text-display text-off-white mb-6 max-w-[880px] mx-auto">
+      Je persoonlijk geheugen,<br class="hidden md:block" />
+      <span class="text-amber">werkend gemaakt.</span>
     </h1>
 
     <!-- Subheadline -->
-    <p class="font-sans text-lg md:text-xl text-text-muted mb-4 max-w-[600px] mx-auto leading-relaxed">
-      AI-powered accountability that turns your best intentions into completed actions — in your first 14 days, spending just 5 minutes a day, or your money back.
-    </p>
-
-    <!-- Avatar qualification -->
-    <p class="font-sans text-sm text-text-dim mb-10 max-w-[500px] mx-auto">
-      For professionals who plan but don't ship, know but don't do, start but never finish.
+    <p class="font-sans text-lg md:text-xl text-text-muted mb-10 max-w-[640px] mx-auto leading-relaxed">
+      Eén systeem dat je content maakt, je kennis scherp houdt, en je confronteert met je eigen execution. Schrijf waar je wilt — het systeem doet de rest.
     </p>
 
     <!-- CTA -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
       <Button href={scorecard} data-cta="scorecard" variant="primary" size="large">
-        Take the Execution Score Assessment
+        Doe de Executie-Kloof Score
         <Arrow />
+      </Button>
+      <Button href="#how-it-works" variant="secondary" size="large">
+        Bekijk hoe het werkt
       </Button>
     </div>
 
     <p class="text-sm text-text-dim font-sans mb-16">
-      Free. 2 minutes. No email required to start.
+      Gratis. 2 minuten. Geen e-mail nodig om te starten.
     </p>
 
     <!-- Stat cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-content mx-auto">
-      <StatCard number="85%+" description="target execution rate" />
-      <StatCard number="<48h" description="from call to system live" />
-      <StatCard number="5 min" description="per day is all it takes" />
+      <StatCard number="3 modules" description="Execute · Create · Learn" />
+      <StatCard number="<1 week" description="van start tot eerste output" />
+      <StatCard number="5 min/dag" description="meer heb je niet nodig" />
     </div>
 
   </div>
